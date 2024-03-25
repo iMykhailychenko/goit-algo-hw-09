@@ -20,7 +20,7 @@ def find_coins_greedy(amount):
 def find_min_coins(amount):
     if amount == 0 or min(coins) > amount:
         return {}
-    
+
     remaining_amount = amount
 
     DP = [float("inf")] * (amount + 1)
@@ -45,12 +45,12 @@ def find_min_coins(amount):
 
 
 fn_map = {
-    'Функція жадібного алгоритму': find_coins_greedy,
-    'Функція динамічного програмування': find_min_coins,
+    "Функція жадібного алгоритму": find_coins_greedy,
+    "Функція динамічного програмування": find_min_coins,
 }
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = []
 
     for name, fn in fn_map.items():
@@ -58,5 +58,11 @@ if __name__ == '__main__':
         for coin in [123, 1234, 12345, 1234567]:
             row.append(timeit.timeit(lambda: fn(coin), number=30))
         data.append(row)
-    
-    print(tabulate(data, headers=['Function', '123', '1234', '12345', '1234567'], tablefmt="pipe"))
+
+    print(
+        tabulate(
+            data,
+            headers=["Function", "123", "1234", "12345", "1234567"],
+            tablefmt="pipe",
+        )
+    )
